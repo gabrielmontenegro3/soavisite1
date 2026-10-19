@@ -15,8 +15,6 @@ const openCartBtn = document.querySelector("#open-cart");
 const closeCartBtn = document.querySelector("#close-cart");
 const dialog = document.querySelector("#product-dialog");
 const toast = document.querySelector("#toast");
-const nav = document.querySelector("#site-nav");
-const menuToggle = document.querySelector("#menu-toggle");
 
 function saveCart() {
   writeCart(cart);
@@ -29,16 +27,18 @@ function el(tag, className, text) {
   return node;
 }
 
-function productPhoto(product) {
+function productPhoto(product, lazy) {
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = "";
+  img.decoding = "async";
+  if (lazy) img.loading = "lazy";
   return img;
 }
 
 function art(product, className) {
   const node = el("div", className);
-  node.append(productPhoto(product));
+  node.append(productPhoto(product, true));
   return node;
 }
 
@@ -58,7 +58,9 @@ function renderProducts() {
 
     const hit = el("button", "card__hit");
     hit.type = "button";
-    hit.setAttribute("aria-label", `Ver ${product.name}`);
+    // A foto é um atalho de mouse; teclado e leitor de tela usam o título.
+    hit.tabIndex = -1;
+    hit.setAttribute("aria-hidden", "true");
     hit.append(art(product, "card__art"));
     hit.addEventListener("click", () => openProduct(product.id));
 
@@ -236,8 +238,22 @@ closeCartBtn.addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && cartEl.getAttribute("aria-hidden") === "false" && !dialog.open) {
+  if (cartEl.getAttribute("aria-hidden") !== "false" || dialog.open) return;
+  if (event.key === "Escape") {
     closeCart();
+    return;
+  }
+  if (event.key !== "Tab") return;
+  // Mantém o foco dentro da sacola aberta.
+  const focusables = [...cartEl.querySelectorAll("button, a[href]")].filter((node) => node.offsetParent);
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
   }
 });
 
@@ -249,22 +265,6 @@ document.querySelector("#modal-add").addEventListener("click", () => {
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
-
-if (menuToggle && nav) {
-  menuToggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-  });
-
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Abrir menu");
-    });
-  });
-}
 
 document.querySelectorAll(".faq__list").forEach((list) => {
   const triggers = [...list.querySelectorAll(".faq__trigger")];
@@ -321,6 +321,10 @@ document.querySelector("#contact-form").addEventListener("submit", (event) => {
   localStorage.setItem("soavi-messages", JSON.stringify(stored));
   form.reset();
   document.querySelector("#contact-ok").hidden = false;
+});
+
+document.querySelector("#contact-form").addEventListener("input", () => {
+  document.querySelector("#contact-ok").hidden = true;
 });
 
 cartEl.inert = true;

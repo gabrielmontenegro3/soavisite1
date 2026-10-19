@@ -2,7 +2,6 @@ const FREE_SHIPPING = 1500;
 const SHIPPING_FEE = 32;
 const CART_KEY = "soavi-cart";
 const ORDER_KEY = "soavi-orders";
-const productImage = "joia/joia1.png";
 
 const money = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -49,7 +48,7 @@ const products = [
     name: "Pulseira Gota e Cristal",
     category: "pulseiras",
     price: 1280,
-    image: "joia/joia1.png",
+    image: "joia/joia1.jpg",
     material: "Prata 925 · zircônia",
     description:
       "Corrente veneziana ajustável, com fecho de correr e duas esferas. Os pingentes são uma gota lisa e um cristal navete cercado por um halo.",

@@ -6,7 +6,7 @@
   <meta name="description" content="Soavi Joalheria em Fortaleza. Pulseira Gota e Cristal em prata 925.">
   <meta name="theme-color" content="#0c0c0c">
   <title>Soavi Joalheria</title>
-  <link rel="icon" href="joia/image-Photoroom.png">
+  <link rel="icon" href="joia/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Jost:wght@300..600&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   <header class="header">
     <div class="wrap header__inner header__bar">
       <a class="header__contact" href="#contato">Contato</a>
-      <a class="logo" href="#topo"><img src="joia/image-Photoroom.png" alt="Soavi"></a>
+      <a class="logo" href="#topo"><img src="joia/logo.webp" width="440" height="302" alt="Soavi"></a>
       <button class="bag" id="open-cart" type="button">
         Sacola
         <span id="cart-count">0</span>
@@ -29,7 +29,6 @@
   <main id="topo">
     <section class="hero wrap">
       <div class="hero__copy">
-        <p class="eyebrow">Joalheria em Fortaleza</p>
         <h1>Coleção <em>Essência</em></h1>
         <p class="lede">Peças leves em ouro e prata, feitas para o dia. Cada uma sai de Fortaleza com a medida conferida.</p>
         <div class="hero__points">
@@ -40,7 +39,7 @@
         <a class="text-link" href="#colecao">Ver a coleção</a>
       </div>
       <figure class="hero__art">
-        <img src="joia/hero.jpg" alt="Mulher usando um colar fino de ouro e um brinco de esfera">
+        <img src="joia/hero.jpg" width="1024" height="1152" fetchpriority="high" alt="Mulher usando um colar fino de ouro e um brinco de esfera">
       </figure>
     </section>
 
@@ -67,7 +66,6 @@
 
     <section class="standard wrap" id="sobre">
       <div>
-        <p class="eyebrow">Qualidade</p>
         <h2>O cuidado Soavi em cada fecho</h2>
         <p>A Soavi fica em Fortaleza. A peça sai com o fecho conferido e a caixa rígida. No primeiro ano, o ajuste é nosso.</p>
         <ul class="standard__list">
@@ -109,7 +107,6 @@
 
     <section class="faq wrap" id="duvidas" data-layout="split">
       <div class="faq__intro">
-        <p class="eyebrow">Dúvidas</p>
         <h2>Tamanho, cuidado e entrega</h2>
         <p>Três respostas diretas. Se ficar alguma outra, escreva para a Soavi.</p>
         <p class="faq__more">Ainda tem dúvidas? <a href="#contato">Falar com a Soavi</a></p>
@@ -159,7 +156,6 @@
 
     <section class="contact wrap" id="contato">
       <div>
-        <p class="eyebrow">Contato</p>
         <h2>Visite ou escreva</h2>
         <address>
           Rua Barbosa de Freitas, 820<br>
@@ -188,7 +184,7 @@
   <footer class="footer">
     <div class="wrap footer__grid">
       <div>
-        <p class="logo"><img src="joia/image-Photoroom.png" alt="Soavi"></p>
+        <p class="logo"><img src="joia/logo.webp" width="440" height="302" alt="Soavi" loading="lazy"></p>
         <p>Joalheria em Fortaleza.</p>
       </div>
       <div>
@@ -209,7 +205,7 @@
   </footer>
 
   <div class="backdrop" id="backdrop" hidden></div>
-  <aside class="cart" id="cart" aria-hidden="true" aria-labelledby="cart-title">
+  <aside class="cart" id="cart" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cart-title">
     <div class="cart__head">
       <h2 id="cart-title">Sacola</h2>
       <button class="text-btn" id="close-cart" type="button">Fechar</button>

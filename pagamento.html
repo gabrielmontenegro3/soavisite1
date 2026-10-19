@@ -6,7 +6,7 @@
   <meta name="description" content="Pagamento — Soavi Joalheria, Fortaleza.">
   <meta name="theme-color" content="#0c0c0c">
   <title>Pagamento — Soavi Joalheria</title>
-  <link rel="icon" href="joia/image-Photoroom.png">
+  <link rel="icon" href="joia/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Jost:wght@300..600&display=swap" rel="stylesheet">
@@ -15,14 +15,13 @@
 <body>
   <header class="header">
     <div class="wrap header__inner">
-      <a class="logo" href="index.html"><img src="joia/image-Photoroom.png" alt="Soavi"></a>
+      <a class="logo" href="index.html"><img src="joia/logo.webp" width="440" height="302" alt="Soavi"></a>
       <a class="text-btn pay-back" href="index.html">Continuar comprando</a>
     </div>
   </header>
 
   <main class="wrap">
     <section class="pay-empty" id="pay-empty" hidden>
-      <p class="eyebrow">Sacola</p>
       <h1>Sua sacola está vazia</h1>
       <p>Escolha uma peça na coleção para seguir ao pagamento.</p>
       <a class="btn" href="index.html#colecao">Ver coleção</a>
@@ -30,7 +29,6 @@
 
     <section class="pay" id="pay-flow" hidden>
       <form class="form pay-form" id="pay-form">
-        <p class="eyebrow">Pagamento</p>
         <h1>Finalizar pedido</h1>
 
         <div class="pay-block">
@@ -141,8 +139,8 @@
     </section>
 
     <section class="done" id="pay-done" hidden>
-      <p class="eyebrow">Pagamento aprovado</p>
-      <h1 id="done-id"></h1>
+      <h1 tabindex="-1" id="done-title">Pagamento aprovado</h1>
+      <p class="done__id" id="done-id"></p>
       <p id="done-method"></p>
       <p id="done-address"></p>
       <div id="done-items"></div>
@@ -153,7 +151,7 @@
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p class="logo"><img src="joia/image-Photoroom.png" alt="Soavi"></p>
+      <p class="logo"><img src="joia/logo.webp" width="440" height="302" alt="Soavi" loading="lazy"></p>
       <p>Aldeota — Fortaleza</p>
       <p>© 2026 Soavi Joalheria</p>
     </div>

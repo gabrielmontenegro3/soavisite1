@@ -94,7 +94,7 @@ function showReceipt(order) {
   payEmpty.hidden = true;
   payFlow.hidden = true;
   payDone.hidden = false;
-  document.querySelector("#done-id").textContent = order.id;
+  document.querySelector("#done-id").textContent = `Pedido ${order.id}`;
   document.querySelector("#done-method").textContent =
     order.payment.method === "pix"
       ? "Pix confirmado. Enviaremos a nota para o e-mail informado."
@@ -260,6 +260,7 @@ payForm.addEventListener("submit", (event) => {
     url.searchParams.set("pedido", order.id);
     window.history.replaceState({}, "", url);
     showReceipt(order);
+    document.querySelector("#done-title").focus();
   }, 1200);
 });
 

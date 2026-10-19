@@ -16,8 +16,9 @@ const bundledFiles = [
   path.join(root, "joia/anel-essenza.jpg"),
   path.join(root, "joia/brinco-lumi.jpg"),
   path.join(root, "joia/pulseira-serena.jpg"),
-  path.join(root, "joia/joia1.png"),
-  path.join(root, "joia/image-Photoroom.png"),
+  path.join(root, "joia/joia1.jpg"),
+  path.join(root, "joia/logo.webp"),
+  path.join(root, "joia/favicon.png"),
 ];
 bundledFiles.forEach((file) => fs.readFileSync(file));
 
