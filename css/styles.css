@@ -121,10 +121,22 @@ a { color: inherit; }
   width: auto;
 }
 
+.header__inner:has(.brand) { justify-content: center; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
 .nav {
   display: flex;
-  gap: 22px;
-  margin-right: auto;
+  gap: 28px;
+}
+
+.header__inner:has(.brand) .bag {
+  position: absolute;
+  right: 0;
 }
 
 .nav a,
@@ -832,6 +844,11 @@ address { font-style: normal; margin: 18px 0; }
 
 @media (max-width: 700px) {
   .menu-toggle { display: grid; }
+  .header__inner:has(.brand) .menu-toggle {
+    position: absolute;
+    right: 84px;
+  }
+  .logo img { height: 62px; }
   .nav {
     display: none;
     position: absolute;
