@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pagamento — Soavi Joalheria, Fortaleza.">
+  <meta name="theme-color" content="#0c0c0c">
+  <title>Pagamento — Soavi Joalheria</title>
+  <link rel="icon" href="joia/image-Photoroom.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="logo" href="index.html"><img src="joia/image-Photoroom.png" alt="Soavi"></a>
+      <a class="text-btn pay-back" href="index.html">Continuar comprando</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="pay-empty" id="pay-empty" hidden>
+      <p class="eyebrow">Sacola</p>
+      <h1>Sua sacola está vazia</h1>
+      <p>Escolha uma peça na coleção para seguir ao pagamento.</p>
+      <a class="btn" href="index.html#colecao">Ver coleção</a>
+    </section>
+
+    <section class="pay" id="pay-flow" hidden>
+      <form class="form pay-form" id="pay-form">
+        <p class="eyebrow">Pagamento</p>
+        <h1>Finalizar pedido</h1>
+
+        <div class="pay-block">
+          <h2>Contato</h2>
+          <label>Nome completo
+            <input name="nome" type="text" autocomplete="name" required>
+          </label>
+          <label>E-mail
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>Telefone
+            <input name="telefone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </label>
+        </div>
+
+        <div class="pay-block">
+          <h2>Entrega</h2>
+          <div class="pay-grid">
+            <label>CEP
+              <input name="cep" type="text" inputmode="numeric" autocomplete="postal-code" required>
+            </label>
+            <label>Estado
+              <select name="estado" autocomplete="address-level1" required>
+                <option value="CE" selected>CE</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select>
+            </label>
+          </div>
+          <label>Cidade
+            <input name="cidade" type="text" autocomplete="address-level2" value="Fortaleza" required>
+          </label>
+          <label>Endereço
+            <input name="rua" type="text" autocomplete="address-line1" required>
+          </label>
+          <div class="pay-grid">
+            <label>Número
+              <input name="numero" type="text" required>
+            </label>
+            <label>Complemento
+              <input name="complemento" type="text" autocomplete="address-line2">
+            </label>
+          </div>
+          <label>Bairro
+            <input name="bairro" type="text" required>
+          </label>
+        </div>
+
+        <div class="pay-block">
+          <h2>Pagamento</h2>
+          <div class="pay-methods">
+            <label>
+              <input type="radio" name="metodo" value="pix" checked>
+              Pix
+            </label>
+            <label>
+              <input type="radio" name="metodo" value="cartao">
+              Cartão de crédito
+            </label>
+          </div>
+          <div id="card-fields" hidden>
+            <label>Número do cartão
+              <input name="cartao" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000">
+            </label>
+            <label>Nome impresso
+              <input name="titular" type="text" autocomplete="cc-name">
+            </label>
+            <div class="pay-grid">
+              <label>Validade
+                <input name="validade" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA">
+              </label>
+              <label>CVV
+                <input name="cvv" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="000">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <p class="form__error" id="pay-error" role="alert" hidden></p>
+        <button class="btn btn--block" id="pay-submit" type="submit">Pagar</button>
+      </form>
+
+      <aside class="summary" id="pay-summary" aria-label="Resumo do pedido"></aside>
+    </section>
+
+    <section class="done" id="pay-done" hidden>
+      <p class="eyebrow">Pagamento aprovado</p>
+      <h1 id="done-id"></h1>
+      <p id="done-method"></p>
+      <p id="done-address"></p>
+      <div id="done-items"></div>
+      <dl class="totals" id="done-totals"></dl>
+      <a class="btn" href="index.html">Voltar à loja</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="logo"><img src="joia/image-Photoroom.png" alt="Soavi"></p>
+      <p>Aldeota — Fortaleza</p>
+      <p>© 2026 Soavi Joalheria</p>
+    </div>
+  </footer>
+  <script src="js/catalog.js"></script>
+  <script src="js/pagamento.js"></script>
+</body>
+</html>
