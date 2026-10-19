@@ -50,6 +50,7 @@ function visibleProducts() {
 function renderProducts() {
   const list = visibleProducts();
   grid.replaceChildren();
+  grid.dataset.count = String(list.length);
   resultCount.textContent = list.length === 1 ? "1 peça" : `${list.length} peças`;
 
   list.forEach((product) => {
