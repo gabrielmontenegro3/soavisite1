@@ -249,17 +249,49 @@ dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
-menuToggle.addEventListener("click", () => {
-  const open = nav.classList.toggle("is-open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-});
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  });
 
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Abrir menu");
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menu");
+    });
+  });
+}
+
+document.querySelectorAll(".faq__list").forEach((list) => {
+  const triggers = [...list.querySelectorAll(".faq__trigger")];
+
+  const setOpen = (trigger, open) => {
+    trigger.setAttribute("aria-expanded", String(open));
+    trigger.closest(".faq__item").dataset.state = open ? "open" : "closed";
+  };
+
+  triggers.forEach((trigger, index) => {
+    // Uma resposta aberta por vez; clicar na aberta fecha de novo.
+    trigger.addEventListener("click", () => {
+      const open = trigger.getAttribute("aria-expanded") !== "true";
+      triggers.forEach((other) => setOpen(other, other === trigger && open));
+    });
+
+    trigger.addEventListener("keydown", (event) => {
+      const last = triggers.length - 1;
+      const next = {
+        ArrowDown: index === last ? 0 : index + 1,
+        ArrowUp: index === 0 ? last : index - 1,
+        Home: 0,
+        End: last,
+      }[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      triggers[next].focus();
+    });
   });
 });
 

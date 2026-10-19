@@ -14,21 +14,11 @@
 </head>
 <body>
   <a class="skip" href="#colecao">Ir para a coleção</a>
-  <p class="ticker">Soavi · Fortaleza · frete grátis acima de R$ 1.500</p>
 
   <header class="header">
-    <div class="wrap header__inner">
-      <div class="brand">
-        <a class="logo" href="#topo"><img src="joia/image-Photoroom.png" alt="Soavi"></a>
-        <nav class="nav" id="site-nav">
-          <a href="#colecao">Coleção</a>
-          <a href="#sobre">Ateliê</a>
-          <a href="#contato">Contato</a>
-        </nav>
-      </div>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
-        <span></span><span></span>
-      </button>
+    <div class="wrap header__inner header__bar">
+      <a class="header__contact" href="#contato">Contato</a>
+      <a class="logo" href="#topo"><img src="joia/image-Photoroom.png" alt="Soavi"></a>
       <button class="bag" id="open-cart" type="button">
         Sacola
         <span id="cart-count">0</span>
@@ -86,27 +76,56 @@
           <li>Certificado junto com a peça</li>
         </ul>
       </div>
-      <p class="seal"><span>Fortaleza</span>Ateliê Soavi</p>
+      <img class="seal" src="joia/image-Photoroom.png" alt="Soavi">
     </section>
 
-    <section class="faq wrap" id="duvidas">
-      <div>
+    <section class="faq wrap" id="duvidas" data-layout="split">
+      <div class="faq__intro">
         <p class="eyebrow">Dúvidas</p>
         <h2>Tamanho, cuidado e entrega</h2>
+        <p>Três respostas diretas. Se ficar alguma outra, escreva para o ateliê.</p>
+        <p class="faq__more">Ainda tem dúvidas? <a href="#contato">Falar com a Soavi</a></p>
       </div>
       <div class="faq__list">
-        <details open>
-          <summary>A pulseira serve em qual pulso?</summary>
-          <p>A corrente é ajustável, com fecho de correr e duas esferas. Se quiser, deixe a medida do pulso na observação do pagamento.</p>
-        </details>
-        <details>
-          <summary>Como cuidar da prata?</summary>
-          <p>Guarde seca, longe de perfume e água de piscina. Um pano macio devolve o brilho. O banho de uso diário pode esperar a peça secar.</p>
-        </details>
-        <details>
-          <summary>Quanto tempo leva para chegar?</summary>
-          <p>Saindo de Fortaleza, o envio segue para todo o Brasil. O frete é grátis acima de R$ 1.500. Abaixo disso, o valor aparece no pagamento.</p>
-        </details>
+        <div class="faq__item" data-state="open">
+          <h3 class="faq__heading">
+            <button class="faq__trigger" type="button" id="faq-q-pulso" aria-expanded="true" aria-controls="faq-a-pulso">
+              <span>A pulseira serve em qual pulso?</span>
+              <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-a-pulso" role="region" aria-labelledby="faq-q-pulso">
+            <div class="faq__answer">
+              <p>A corrente é ajustável, com fecho de correr e duas esferas. Se quiser, deixe a medida do pulso na observação do pagamento.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item" data-state="closed">
+          <h3 class="faq__heading">
+            <button class="faq__trigger" type="button" id="faq-q-prata" aria-expanded="false" aria-controls="faq-a-prata">
+              <span>Como cuidar da prata?</span>
+              <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-a-prata" role="region" aria-labelledby="faq-q-prata">
+            <div class="faq__answer">
+              <p>Guarde seca, longe de perfume e água de piscina. Um pano macio devolve o brilho. O banho de uso diário pode esperar a peça secar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq__item" data-state="closed">
+          <h3 class="faq__heading">
+            <button class="faq__trigger" type="button" id="faq-q-entrega" aria-expanded="false" aria-controls="faq-a-entrega">
+              <span>Quanto tempo leva para chegar?</span>
+              <svg class="faq__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <div class="faq__panel" id="faq-a-entrega" role="region" aria-labelledby="faq-q-entrega">
+            <div class="faq__answer">
+              <p>Saindo de Fortaleza, o envio segue para todo o Brasil. O frete é grátis acima de R$ 1.500. Abaixo disso, o valor aparece no pagamento.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
