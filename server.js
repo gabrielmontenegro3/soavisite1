@@ -5,6 +5,22 @@ const path = require("path");
 const root = __dirname;
 const port = Number(process.env.PORT) || 5173;
 
+const bundledFiles = [
+  path.join(root, "index.html"),
+  path.join(root, "pagamento.html"),
+  path.join(root, "css/styles.css"),
+  path.join(root, "js/app.js"),
+  path.join(root, "js/catalog.js"),
+  path.join(root, "js/pagamento.js"),
+  path.join(root, "joia/hero.jpg"),
+  path.join(root, "joia/anel-essenza.jpg"),
+  path.join(root, "joia/brinco-lumi.jpg"),
+  path.join(root, "joia/pulseira-serena.jpg"),
+  path.join(root, "joia/joia1.png"),
+  path.join(root, "joia/image-Photoroom.png"),
+];
+bundledFiles.forEach((file) => fs.readFileSync(file));
+
 const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -19,8 +35,8 @@ const types = {
 
 const server = http.createServer((req, res) => {
   const requestUrl = new URL(req.url, "http://127.0.0.1");
-  let pathname = decodeURIComponent(requestUrl.pathname);
-  if (pathname.endsWith("/")) pathname += "index.html";
+  let pathname = decodeURIComponent(requestUrl.pathname).replace(/^\/+/, "");
+  if (pathname === "" || pathname.endsWith("/")) pathname += "index.html";
 
   const file = path.normalize(path.join(root, pathname));
   const relative = path.relative(root, file);
